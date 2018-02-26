@@ -1,0 +1,31 @@
+<div class="tr-dates-wrap">
+
+  <!-- Headings -->
+  <div class="heads-wrap row">
+    <div class="col left-side">
+      <span class="head-dates">dates</span>
+    </div>
+    <div class="col right-side">
+      <span class="head-events">events</span>
+    </div>
+  </div>
+
+  <!-- Transphere Modules -->
+  <div class="anim-wrap" [@listAnimation]="filteredData.length">
+    <div *ngFor="let transport of filteredData" class="tr-date-module row">
+      <div class="tr-date col left-side">
+        <div class="day">{{ transport.date.day }}</div>
+        <div class="week-day">{{ transport.date.weekDay }}</div>
+        <div class="dot pulse"></div>
+      </div>
+      <div class="tr-event col right-side">
+        <div class="route">{{ transport.event.startDest }} - {{ transport.event.endDest }}</div>
+        <div class="info-wrap">
+          <div class="price">FROM {{ transport.event.price }}</div>
+          <div class="time">{{ transport.event.time }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

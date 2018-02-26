@@ -1,0 +1,43 @@
+<div class="tr-wrap-navbar z-depth-2">
+  <div class="row valign-wrapper">
+    <div class="tr-navbar col s12 m4 offset-m4">
+      <div class="date-wrap">
+        <div class="input-field date">
+          <select (change)="select($event.target.value)" materialize="material_select" [materializeSelectOptions]="selectOptions">
+            <option *ngFor="let option of selectOptions" [value]="option.id" routerLink="/calendar/{{option}}">{{option.month}} {{option.year}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="top-menu col m4 hide-on-small-only">
+      <div class="top-tab" routerLink="/calendar/1">
+        <div class="slide-rect z-depth-1"></div>
+        <div class="top-tab-icon">
+          <i class="fas fa-calendar"></i>
+        </div>
+        <div class="icon-name">Calendar</div>
+      </div>
+      <div class="top-tab" routerLink="/calendar/1">
+        <div class="slide-rect z-depth-1"></div>
+        <div class="top-tab-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="icon-name">Search</div>
+      </div>
+      <div class="top-tab" routerLink="/info">
+        <div class="slide-rect z-depth-1"></div>
+        <div class="top-tab-icon">
+          <i class="fas fa-info-circle"></i>
+        </div>
+        <div class="icon-name">Info</div>
+      </div>
+      <!-- <div class="top-tab">
+        <div class="slide-rect z-depth-1"></div>
+        <div class="top-tab-icon">
+          <i class="fas fa-heart"></i>
+        </div>
+        <div class="icon-name">Nigger</div>
+      </div> -->
+    </div>
+  </div>
+</div>

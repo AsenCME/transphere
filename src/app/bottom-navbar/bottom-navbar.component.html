@@ -1,0 +1,33 @@
+<div class="tr-bottom-navbar shadow">
+    <div class="tabs-wrap" [class.driver]="isDriver">
+        <div class="tab" id="tab-0" (click)="changeTab(0)" routerLink="/calendar/1">
+            <div class="tab-icon">
+                <i class="fas fa-calendar"></i>
+            </div>
+            <div class="tab-underline"></div>
+        </div>
+        <div class="tab" id="tab-1" (click)="changeTab(1)" routerLink="/calendar/1">
+            <div class="tab-icon">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="tab-underline"></div>
+        </div>
+        <div *ngIf="isDriver" class="tab add-wrap">
+            <div class="add z-depth-3 btn-floating btn-large waves-effect waves-light red">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+        <div class="tab" id="tab-2" (click)="changeTab(2)" routerLink="/profile">
+            <div class="tab-icon">
+                <i class="fas fa-info-circle"></i>
+            </div>
+            <div class="tab-underline"></div>
+        </div>
+        <div *ngIf="isDriver" class="tab" id="tab-3" (click)="changeTab(3)">
+            <div class="tab-icon">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="tab-underline"></div>
+        </div>
+    </div>
+</div>

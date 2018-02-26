@@ -1,0 +1,72 @@
+.tr-bottom-navbar {
+  z-index: 100;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100vw;
+  border-top: 1px solid #c2c2c2;
+}
+.tabs-wrap {
+  background: white;
+  width: 80vw;
+  margin-left: 10vw;
+  height: 100%;
+  padding: 8px 15px;
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  overflow: hidden;
+}
+.tab {
+  color: #6e6e6e;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 25px;
+  transition: 0.3s ease-in-out;
+}
+.add {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+.tab-underline {
+  transition: 0.2s ease-in-out;
+  transform: translateY(5px);
+  margin-top: 2px;
+  width: 100%;
+  height: 3px;
+  background: black;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+.active {
+  color: black;
+}
+.active > .tab-underline {
+  transform: translateY(0px);
+}
+.shadow {
+  box-shadow: 0 -4px 5px 0 rgba(0, 0, 0, 0.14), 0 -1px 10px 0 rgba(0, 0, 0, 0.12), 0 -2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+.driver {
+  width: 100vw;
+  margin-left: 0px;
+}
+.add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  position: absolute;
+  transform: translateY(-75%);
+  width: 60px;
+  height: 60px;
+  font-size: 28px;
+  font-weight: 100;
+}
+.add-wrap {
+  width: 15%;
+}
