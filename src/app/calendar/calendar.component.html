@@ -19,8 +19,8 @@
         <div class="dot pulse"></div>
       </div>
       <div class="tr-event col right-side">
-        <div class="route">{{ transport.event.startDest }} - {{ transport.event.endDest }}</div>
-        <div class="info-wrap">
+        <div class="route" routerLink="/detail/{{transport.id}}">{{ transport.event.startDest }} - {{ transport.event.endDest }}</div>
+        <div class="info-wrap" routerLink="/detail/{{transport.id}}">
           <div class="price">FROM {{ transport.event.price }}</div>
           <div class="time">{{ transport.event.time }}</div>
         </div>

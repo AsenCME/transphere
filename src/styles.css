@@ -12,8 +12,9 @@ body {
 }
 .router-wrap {
   width: 100%;
+  height: 100%;
   padding-top: 7vh !important;
-  height: calc(100% - 8vh);
+  height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -21,6 +22,16 @@ body {
   width: 75px !important; /* width of dropdown */
   border-bottom: none !important;
   margin: 0px !important;
+}
+.search .select-dropdown {
+  width: 80px !important; /* width of dropdown duplicate */
+}
+.search-wrap .input-field {
+  margin: 0px !important;
+  display: inline-block !important;
+}
+.search-wrap .row {
+  width: 100% !important;
 }
 .date {
   margin: 0px !important;
@@ -42,9 +53,21 @@ body {
   position: relative;
   font-size: 13px;
 }
+.search .arrow {
+  display: none !important;
+}
 .dropdown-content li > span {
   color: #ff6600 !important;
   font-size: 16px !important; /* font size of content inside ul */
   padding-right: 0px !important;
   padding-left: 10px !important;
+}
+.input-field label {
+  transition: 0.3s ease-in-out !important;
+}
+
+@media only screen and (max-width: 800px) {
+  .router-wrap {
+    height: calc(100% - 8vh);
+  }
 }

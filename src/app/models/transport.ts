@@ -1,5 +1,6 @@
 export class Transport {
   id: String;
+  monthId: String;
   date: {
     day: String;
     weekDay: String;

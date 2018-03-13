@@ -1,12 +1,28 @@
 <div class="tr-wrap-navbar z-depth-2">
   <div class="row valign-wrapper">
-    <div class="tr-navbar col s12 m4 offset-m4">
-      <div class="date-wrap">
+    <div class="tr-navbar col s12 m6 offset-m2">
+      <div *ngIf="!isSearching && !isOnDetail" class="date-wrap">
         <div class="input-field date">
           <select (change)="select($event.target.value)" materialize="material_select" [materializeSelectOptions]="selectOptions">
-            <option *ngFor="let option of selectOptions" [value]="option.id" routerLink="/calendar/{{option}}">{{option.month}} {{option.year}}</option>
+            <option *ngFor="let option of selectOptions" [value]="option.monthId" routerLink="/calendar/{{option}}">{{option.month}} {{option.year}}</option>
           </select>
         </div>
+      </div>
+      <div *ngIf="isSearching" class="search-wrap">
+        <div class="row" style="width: 100%">
+          <div class="input-field" style="width: 70%">
+            <input (keyup)="onKeyUp($event.target.value)" id="search" type="text">
+            <label for="search">Search...</label>
+          </div>
+          <div class="input-field search">
+            <select id="searchType" materialize="material_select" [materializeSelectOptions]="searchOptions">
+              <option *ngFor="let option of searchOptions" [value]="option.value">{{option.name}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isOnDetail" class="detail-header">
+        Details Page
       </div>
     </div>
     <div class="top-menu col m4 hide-on-small-only">
@@ -17,7 +33,7 @@
         </div>
         <div class="icon-name">Calendar</div>
       </div>
-      <div class="top-tab" routerLink="/calendar/1">
+      <div class="top-tab" routerLink="/calendar/all">
         <div class="slide-rect z-depth-1"></div>
         <div class="top-tab-icon">
           <i class="fas fa-search"></i>

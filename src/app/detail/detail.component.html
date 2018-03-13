@@ -1,0 +1,39 @@
+<div class="row valign-wrapper">
+  <div class="col s4">
+    <div class="detail-date">
+      <div class="detail-day">{{transport.date.day}}</div>
+      <div class="detail-month">{{monthString}}</div>
+    </div>
+  </div>
+  <div class="col s8">
+    <div class="dest">
+      <span class="alias">From:</span>
+      <span class="detail-name">{{transport.event.startDest}}</span>
+    </div>
+    <div class="dest">
+      <span class="alias">To:</span>
+      <span class="detail-name">{{transport.event.endDest}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="close" (click)="goBack()">
+  <i class="material-icons">clear</i>
+</div>
+
+<div class="info-wrap">
+  <div class="detail-info-header">
+    <span>Additional Information</span>
+  </div>
+  <div class="detail-info-wrap">
+    <div class="detail-info">
+      <span class="alias">Departure Time: </span>
+      <span class="detail-name">{{transport.event.time}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="buy-wrap">
+  <div class="detail-price">{{transport.event.price}}</div>
+  <div class="detail-buy">book now</div>
+</div>
