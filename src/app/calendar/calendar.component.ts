@@ -31,8 +31,8 @@ import { Transport } from "../models/transport";
   ],
 })
 export class CalendarComponent implements OnInit {
-  data: Array<Transport>;
-  filteredData: Array<Transport> = [];
+  data = [];
+  filteredData = [];
   query: SearchQuery;
 
   constructor(
@@ -44,18 +44,8 @@ export class CalendarComponent implements OnInit {
 
   ngOnInit() {
     this.getData();
-    this.applyColor();
     this.subToParams();
     this.subToQuery();
-  }
-
-  applyColor() {
-    let wrap = $(".router-wrap")
-      .children(0)
-      .children(0)
-      .children(1)
-      .children(1)
-      .siblings(1)[1];
   }
 
   getData() {
@@ -71,18 +61,19 @@ export class CalendarComponent implements OnInit {
         return;
       }
       if (params.id == 1) {
-        let id = this.dataService.getMonths()[0].monthId;
-        this.router.navigate([`/calendar/${id}`]);
+        this.dataService.getData().subscribe(data => {
+          let id = data[0].monthid;
+          this.router.navigate([`/calendar/${id}`]);
+        });
       }
       this.filterData(params.id);
     });
   }
 
-  filterData(monthId) {
-    this.filteredData = [];
-    setTimeout(() => {
-      this.filteredData = this.data.filter(x => x.monthId === monthId);
-    }, 600);
+  filterData(monthid) {
+    this.dataService.getDataByMonthId(monthid).subscribe(data => {
+      this.filteredData = data;
+    });
   }
 
   subToQuery() {
@@ -92,7 +83,11 @@ export class CalendarComponent implements OnInit {
   }
 
   displayAll() {
-    this.filteredData = this.data;
+    this.dataService.getData().subscribe(data => (this.filteredData = data));
+  }
+
+  toWeekDay(month) {
+    return this.dataService.monthNames[+month - 1];
   }
 
   filterByQuery(query: SearchQuery) {
@@ -103,17 +98,16 @@ export class CalendarComponent implements OnInit {
     switch (query.type) {
       case "price":
         this.filteredData = this.data.filter(x => {
-          let currentPrice = Number(x.event.price.substr(0, x.event.price.length - 1));
+          let currentPrice = Number(x.price);
           let valuePrice = Number(query.value);
-          console.log(currentPrice, valuePrice);
           return currentPrice <= valuePrice;
         });
         break;
       case "city":
         this.filteredData = this.data.filter(x => {
           return (
-            x.event.endDest.toLowerCase().includes(query.value.toLowerCase()) ||
-            x.event.startDest.toLowerCase().includes(query.value.toLowerCase())
+            x.endcity.toLowerCase().includes(query.value.toLowerCase()) ||
+            x.startcity.toLowerCase().includes(query.value.toLowerCase())
           );
         });
         break;

@@ -23,6 +23,17 @@ body {
   border-bottom: none !important;
   margin: 0px !important;
 }
+#luggage .select-wrapper input {
+  width: 100% !important;
+  color: #6e6e6e !important;
+}
+#luggage .select-wrapper {
+  border-bottom: 1px solid #9f9f9f;
+  margin-bottom: 15px !important;
+}
+#luggage .select-dropdown {
+  width: 100% !important;
+}
 .search .select-dropdown {
   width: 80px !important; /* width of dropdown duplicate */
 }
@@ -64,6 +75,10 @@ body {
 }
 .input-field label {
   transition: 0.3s ease-in-out !important;
+}
+
+.login-modal input {
+  font-size: 20px !important;
 }
 
 @media only screen and (max-width: 800px) {

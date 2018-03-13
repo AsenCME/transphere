@@ -14,15 +14,15 @@
   <div class="anim-wrap" [@listAnimation]="filteredData.length">
     <div *ngFor="let transport of filteredData" class="tr-date-module row">
       <div class="tr-date col left-side">
-        <div class="day">{{ transport.date.day }}</div>
-        <div class="week-day">{{ transport.date.weekDay }}</div>
+        <div class="day">{{ transport.day }}</div>
+        <div class="week-day">{{ toWeekDay(transport.month) }}</div>
         <div class="dot pulse"></div>
       </div>
       <div class="tr-event col right-side">
-        <div class="route" routerLink="/detail/{{transport.id}}">{{ transport.event.startDest }} - {{ transport.event.endDest }}</div>
+        <div class="route" routerLink="/detail/{{transport.id}}">{{ transport.startcity }} - {{ transport.endcity }}</div>
         <div class="info-wrap" routerLink="/detail/{{transport.id}}">
-          <div class="price">FROM {{ transport.event.price }}</div>
-          <div class="time">{{ transport.event.time }}</div>
+          <div class="price">FROM {{ transport.price }}$</div>
+          <div class="time">{{ transport.duration }} mins</div>
         </div>
       </div>
     </div>

@@ -1,0 +1,27 @@
+<main class="login-wrap">
+  <img class="responsive-img" style="width: 100px;" alt="TranSphere logo" src="../../assets/icon.png" />
+
+  <h5 class="" style="color: #ff6600;">Please, login into your account</h5>
+  <br/>
+  <div class="login-modal z-depth-1 grey lighten-4 row" style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+    <div class="col s12" method="post">
+      <div class='row'>
+        <div class='input-field col s12'>
+          <input class='validate' type='email' name='email' id='email' />
+          <label for='email'>Your email</label>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='input-field col s12'>
+          <input class='validate' type='text' name='driverid' id='password' />
+          <label for='password'>Your Driver License ID</label>
+        </div>
+      </div>
+      <div class='row'>
+        <button (click)="submitForm()" style="background-color: #ff6600;" type='submit' name='submit' class='col s12 btn btn-large waves-effect '>Login</button>
+      </div>
+    </div>
+  </div>
+  <a style="color: #ff6600;" href="http://transphere.gimdesign.eu">Back to home page</a>
+</main>

@@ -1,16 +1,19 @@
 export class Transport {
-  id: String;
-  monthId: String;
-  date: {
-    day: String;
-    weekDay: String;
-    month: number;
-    year: number;
-  };
-  event: {
-    startDest: String;
-    endDest: String;
-    price: String;
-    time: String;
-  };
+  id: Number;
+  driverid: Number;
+  monthid: String;
+  startpt: String;
+  startcity: String;
+  endpt: String;
+  endcity: String;
+  arrivet: String;
+  price: String;
+  duration: String;
+  capacity: String;
+  luggage: String;
+  date: Date;
+  day: String;
+  month: String;
+  year: String;
+  status: String;
 }

@@ -1,10 +1,10 @@
 <div class="tr-wrap-navbar z-depth-2">
   <div class="row valign-wrapper">
     <div class="tr-navbar col s12 m6 offset-m2">
-      <div *ngIf="!isSearching && !isOnDetail" class="date-wrap">
+      <div *ngIf="!isSearching && !isOnDetail && !isOnProfile && !isOnLogin && !isOnInfo && !isOnAdd" class="date-wrap">
         <div class="input-field date">
-          <select (change)="select($event.target.value)" materialize="material_select" [materializeSelectOptions]="selectOptions">
-            <option *ngFor="let option of selectOptions" [value]="option.monthId" routerLink="/calendar/{{option}}">{{option.month}} {{option.year}}</option>
+          <select [(ngModel)]="defaultValue" id="select" (change)="select($event.target.value)" materialize="material_select" [materializeSelectOptions]="selectOptions">
+            <option *ngFor="let option of selectOptions" [value]="option" routerLink="/calendar/{{option}}">{{option}}</option>
           </select>
         </div>
       </div>
@@ -23,6 +23,18 @@
       </div>
       <div *ngIf="isOnDetail" class="detail-header">
         Details Page
+      </div>
+      <div *ngIf="isOnProfile" class="detail-header">
+        Profile Page
+      </div>
+      <div *ngIf="isOnLogin" class="detail-header">
+        Login Page
+      </div>
+      <div *ngIf="isOnInfo" class="detail-header">
+        Info Page
+      </div>
+      <div *ngIf="isOnAdd" class="detail-header">
+        Add Offer
       </div>
     </div>
     <div class="top-menu col m4 hide-on-small-only">
@@ -47,13 +59,19 @@
         </div>
         <div class="icon-name">Info</div>
       </div>
-      <!-- <div class="top-tab">
+      <div class="top-tab" routerLink="/profile">
         <div class="slide-rect z-depth-1"></div>
         <div class="top-tab-icon">
-          <i class="fas fa-heart"></i>
+          <i class="fas fa-user"></i>
         </div>
-        <div class="icon-name">Nigger</div>
-      </div> -->
+        <div class="icon-name">Profile</div>
+      </div>
     </div>
+  </div>
+</div>
+
+<div class="add-transport hide-on-small-only">
+  <div class="add z-depth-3 btn-floating btn-large waves-effect waves-light red" routerLink="/add">
+    <i class="material-icons" style="font-size: 30px;">add</i>
   </div>
 </div>

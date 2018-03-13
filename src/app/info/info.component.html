@@ -1,3 +1,112 @@
-<p>
-  info works!
-</p>
+<section id="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col s10 push-s1">
+        <span class="card-title grey-text text-darken-4">
+          <h3>Information</h3>
+        </span>
+
+        <span class="card-title grey-text text-darken-4">TranSphere 2018 &copy;</span>
+        <hr>
+        <br>
+
+        <div class="row">
+          <ul materialize="collapsible" class="collapsible" data-collapsible="accordion">
+            <li>
+              <div class="collapsible-header">
+                <b>About</b>
+              </div>
+              <div class="collapsible-body">
+                <span>
+                  <ol>
+                    <li>
+                      <b>TranSphere</b> is a web application that offers internal transfers on a half price. The application
+                      is formed by 2 modules: for users and for customers. Every user has its own profile page and has the
+                      ability to upload content on the platform. Every user is able to access this information for free.
+                    </li>
+                    <li>
+                      <b>For Users:</b> Every user in the app can upload offers for transfers and can edit them. The user recieves
+                      information about the status of his active offers.
+                      <li>
+                        <b>Registration: </b>The registration form for users is located on the index page of the project. In
+                        order the registration to be successful the user should provide the needed information for authentication.
+                        After registration the user can access his profile via login page where he should type his email
+                        and driver license id.</li>
+                      <li>
+                        <b>Adding an Offer: </b>Every user on the platform is able to add offers. In order to add an offer tha
+                        user should click/tap on the red button with a white cross inside - this is a link to the content-upload
+                        page. The user should provide detailed information about the offer he wants to upload. After a successful
+                        upload of an offer the user can find a link to it on his profile page, where he can also edit it
+                        by clicking on the edit button next to the offer link.</li>
+                      <li>
+                        <b>Editing an Offer: </b>Every user on the platform is able to edit his offers. There is an edit page
+                        from where the user can change details about the offer. The only details that cannot be changed are:
+                        Arrive Time and Date of the transfer.</li>
+                      <li>
+                        <b>Notifications panel: </b>Every user has an individual notifications panel. It can be accessed from
+                        the main navigation of the platform. When a customer decides to book a transfer that is offered by
+                        user, the user recieves information about this request on the notifications panel. From there the
+                        user can confirm the booking and to send an automatic email to the customer.
+                      </li>
+                  </ol>
+                </span>
+              </div>
+              </li>
+              <li>
+                <div class="collapsible-header">
+                  <b>For Customers</b>
+                </div>
+                <div class="collapsible-body">
+                  <span>
+                    <ol>
+                      <li>
+                        <b>For Customers:</b>Every customer in the app can explore and/or book offers for transfers.
+                        <li>
+                          <b>Explore Transfers: </b>Every customer is able to explore the offered transfers and to filter them
+                          by city or month. There is a page for a fast-search of transfers. When the customer clicks on an
+                          offer he is redirected to a page that contains detailed information about the transfer.</li>
+                        <li>
+                          <b>Book Transfers: </b>Every customer is able to book a transfer on the platform. The customer should
+                          go to the detail page related to the transfer and to scroll down to the "book" button. After clicking
+                          on this button the customer sends a request to the user. If the usr confirms the request the customer
+                          recieves a confirmation message. If not, the customer recieves another message.
+                        </li>
+                    </ol>
+                  </span>
+                </div>
+                </li>
+                <li>
+                  <div class="collapsible-header">
+                    <b>Payment Methods</b>
+                  </div>
+                  <div class="collapsible-body">
+                    <span>
+                      <ol>
+                        <li>
+                          <b>Payment: </b>More information about the payment methods on the platform is going to e provided
+                          soon!
+                        </li>
+                      </ol>
+                    </span>
+                  </div>
+                </li>
+          </ul>
+        </div>
+        <hr>
+        <br>
+        <div class="row center">
+          <a *ngIf="!isDriver" routerLink="/login" class="btn-large waves-effect waves-light orange">TRANSPHERE LOGIN</a>
+          <a *ngIf="isDriver" (click)="logout()" class="btn-large waves-effect waves-light orange">LOGOUT</a>
+        </div>
+        <br>
+        <hr>
+        <div class="row center">
+          <p>
+            <b>TranSphere 2018 &copy; - All rights are reserved.</b>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

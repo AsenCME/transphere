@@ -1,0 +1,18 @@
+.card-profile-image {
+  width: 80px;
+  position: absolute;
+  top: 90px;
+  z-index: 1;
+  cursor: pointer;
+  left: 35%;
+  top: 33.5%;
+}
+#profile-card {
+  margin: 0px !important;
+}
+.edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}

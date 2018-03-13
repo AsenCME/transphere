@@ -12,9 +12,9 @@
             </div>
             <div class="tab-underline"></div>
         </div>
-        <div *ngIf="isDriver" class="tab add-wrap">
+        <div *ngIf="isDriver" class="tab add-wrap" routerLink="/add">
             <div class="add z-depth-3 btn-floating btn-large waves-effect waves-light red">
-                <i class="fas fa-plus"></i>
+                <i class="material-icons" style="font-size: 30px;">add</i>
             </div>
         </div>
         <div class="tab" id="tab-2" (click)="changeTab(2)" routerLink="/info">
@@ -23,7 +23,7 @@
             </div>
             <div class="tab-underline"></div>
         </div>
-        <div *ngIf="isDriver" class="tab" id="tab-3" (click)="changeTab(3)">
+        <div *ngIf="isDriver" class="tab" id="tab-3" (click)="changeTab(3)" routerLink="/profile">
             <div class="tab-icon">
                 <i class="fas fa-user"></i>
             </div>

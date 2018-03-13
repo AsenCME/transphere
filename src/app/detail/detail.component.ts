@@ -3,6 +3,8 @@ import { ActivatedRoute, Params } from "@angular/router";
 import { DataService } from "../data.service";
 import { Transport } from "../models/transport";
 import { Location } from "@angular/common";
+import { toast } from "angular2-materialize";
+declare var $: any;
 
 @Component({
   selector: "app-detail",
@@ -10,29 +12,87 @@ import { Location } from "@angular/common";
   styleUrls: ["./detail.component.css"],
 })
 export class DetailComponent implements OnInit {
-  transport: Transport;
+  transport;
+  editTransport;
+  offeringDriver;
+  canEdit;
   monthString: String;
 
   constructor(private route: ActivatedRoute, private dataService: DataService, private location: Location) {}
 
   ngOnInit() {
+    this.editTransport = this.transport;
     this.subToParams();
-    this.monthToWord();
+    this.subToTrans();
+  }
+
+  initScript() {
+    $(".datepicker").pickadate({
+      selectMonths: true,
+      selectYears: 15,
+      today: "Today",
+      clear: "Clear",
+      close: "Ok",
+      closeOnSelect: false,
+    });
+
+    $(".timepicker").pickatime({
+      default: "now",
+      fromnow: 0,
+      twelvehour: false,
+      donetext: "OK",
+      cleartext: "Clear",
+      canceltext: "Cancel",
+      autoclose: false,
+      ampmclickable: true,
+      aftershow: function() {},
+    });
   }
 
   subToParams() {
     this.route.params.subscribe((params: Params) => {
-      this.dataService.getDataById(params.id).subscribe(trans => {
-        this.transport = trans;
+      this.dataService.getDataById(params.id).subscribe(data => {
+        this.dataService.singleTransChange.next(data[0]);
+        this.getDriver(this.transport.driverid);
       });
     });
   }
 
-  monthToWord() {
-    this.monthString = this.dataService.monthNames[this.transport.date.month];
+  subToTrans() {
+    this.dataService.singleTransChange.subscribe(data => {
+      this.transport = data;
+      this.editTransport = data;
+      let monthNum = +data.month;
+      this.monthString = this.dataService.monthNames[monthNum - 1];
+    });
   }
 
   goBack() {
     this.location.back();
+  }
+
+  getDriver(driverid) {
+    this.dataService.getDriver(driverid).subscribe(driver => {
+      this.offeringDriver = driver[0];
+      if (this.dataService.currentUser.driverid === this.offeringDriver.driverid) {
+        this.canEdit = true;
+      } else {
+        this.canEdit = false;
+      }
+    });
+  }
+
+  saveChanges() {
+    let arrivet = $("#arrivet").val();
+    let trDate = $("#date").val();
+    let luggage = $("#luggage select").val();
+    this.editTransport.arrivet = arrivet;
+    this.editTransport.date = trDate;
+    this.editTransport.luggage = luggage;
+    this.dataService.editOffer(this.editTransport);
+  }
+
+  deleteOffer() {
+    this.dataService.deleteOffer(this.transport.id);
   }
 }

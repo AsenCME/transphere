@@ -1,0 +1,70 @@
+<section id="content">
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="close" (click)="goBack()">
+        <i class="material-icons">clear</i>
+      </div>
+
+      <div class="col s10 push-s1" style="margin-top: 7vh !important;">
+        <!-- <span class="card-title grey-text text-darken-4">
+          <h3>Add New Offer</h3>
+        </span> -->
+
+        <span style="margin-top: 5vh !important;" class="card-title grey-text text-darken-4">{{driver.companyname}}</span>
+        <hr>
+        <br>
+
+        <div class="row">
+          <form (ngSubmit)="onSubmit()" class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input [(ngModel)]="newOffer.startpt" placeholder="Start Address" name="startpt" placeholder="Street 10 Str., 2770 - Bansko"
+                  id="startpt" type="text" class="validate">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input [(ngModel)]="newOffer.endpt" placeholder="Arrive Address" name="endpt" placeholder="Street 10 Str., 1000 - Sofia"
+                  id="endpt" type="text" class="validate">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input [(ngModel)]="newOffer.arrivet" placeholder="Arrive Time" type="text" class="timepicker" id="arrivet" name="arrivet">
+              </div>
+              <div class="input-field col s12">
+                <input [(ngModel)]="newOffer.duration" placeholder="Duration (minutes)" name="duration" id="duration" type="number">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input [(ngModel)]="newOffer.capacity" placeholder="Vehilce Capacity (No. persons)" name="capacity" id="capacity" type="number">
+              </div>
+              <div class="input-field col s12" id="luggage">
+                <select materialize="material_select">
+                  <option value="" disabled selected>Luggage Allowed</option>
+                  <option value="no">No</option>
+                  <option value="yes">Yes</option>
+                </select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input [(ngModel)]="newOffer.price" placeholder="Price" name="price" id="price" type="number" placeholder="30$">
+              </div>
+              <div class="input-field col s12">
+                <input [(ngModel)]="newOffer.date" placeholder="Transfer Date" type="text" class="datepicker" id="date" name="date">
+              </div>
+            </div>
+            <br>
+            <button style="width: 80%; margin-left: 10%; margin-bottom: 5vh;" class="btn waves-effect waves-light" type="submit" name="submit">Add Offer
+            </button>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>

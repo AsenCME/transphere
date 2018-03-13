@@ -3,6 +3,7 @@ import { NgModule } from "@angular/core";
 import { MaterializeModule } from "angular2-materialize";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HttpModule } from "@angular/http";
+import { FormsModule } from "@angular/forms";
 
 import { AppComponent } from "./app.component";
 import { TopNavbarComponent } from "./top-navbar/top-navbar.component";
@@ -13,6 +14,9 @@ import { DataService } from "./data.service";
 import { InfoComponent } from "./info/info.component";
 import { DetailComponent } from "./detail/detail.component";
 import { ProfileComponent } from "./profile/profile.component";
+import { LoginComponent } from "./login/login.component";
+import { AddOfferComponent } from "./add-offer/add-offer.component";
+import { AuthGuardService } from "./auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -23,9 +27,11 @@ import { ProfileComponent } from "./profile/profile.component";
     InfoComponent,
     DetailComponent,
     ProfileComponent,
+    LoginComponent,
+    AddOfferComponent,
   ],
-  imports: [BrowserModule, MaterializeModule, AppRoutingModule, BrowserAnimationsModule, HttpModule],
-  providers: [DataService],
+  imports: [BrowserModule, MaterializeModule, AppRoutingModule, BrowserAnimationsModule, HttpModule, FormsModule],
+  providers: [DataService, AuthGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

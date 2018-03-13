@@ -1,18 +1,18 @@
-<div class="row valign-wrapper">
+<div class="row valign-wrapper" *ngIf="transport">
   <div class="col s4">
     <div class="detail-date">
-      <div class="detail-day">{{transport.date.day}}</div>
-      <div class="detail-month">{{monthString}}</div>
+      <div class="detail-day">{{ transport.day }}</div>
+      <div class="detail-month">{{ monthString }}</div>
     </div>
   </div>
   <div class="col s8">
     <div class="dest">
       <span class="alias">From:</span>
-      <span class="detail-name">{{transport.event.startDest}}</span>
+      <span class="detail-name">{{transport.startcity}}</span>
     </div>
     <div class="dest">
       <span class="alias">To:</span>
-      <span class="detail-name">{{transport.event.endDest}}</span>
+      <span class="detail-name">{{transport.endcity}}</span>
     </div>
   </div>
 </div>
@@ -21,19 +21,112 @@
   <i class="material-icons">clear</i>
 </div>
 
-<div class="info-wrap">
+<div class="info-wrap" *ngIf="transport">
   <div class="detail-info-header">
     <span>Additional Information</span>
   </div>
   <div class="detail-info-wrap">
     <div class="detail-info">
-      <span class="alias">Departure Time: </span>
-      <span class="detail-name">{{transport.event.time}}</span>
+      <span class="alias">Arrive Time: </span>
+      <span class="detail-name">{{ transport.arrivet }}</span>
+    </div>
+    <div class="detail-info">
+      <span class="alias">Duration: </span>
+      <span class="detail-name">{{ transport.duration }} mins</span>
+    </div>
+    <div class="detail-info">
+      <span class="alias">Capacity: </span>
+      <span class="detail-name">{{ transport.capacity }} Person(s)</span>
+    </div>
+    <div class="detail-info">
+      <span class="alias">Luggage Allowed: </span>
+      <span class="detail-name">{{ transport.luggage }}</span>
+    </div>
+    <div class="detail-info" *ngIf="offeringDriver">
+      <span class="alias">Start: </span>
+      <span class="detail-name">{{transport.startpt}}</span>
+    </div>
+    <div class="detail-info" *ngIf="offeringDriver">
+      <span class="alias">End: </span>
+      <span class="detail-name">{{transport.endpt}}</span>
+    </div>
+    <div class="detail-info" *ngIf="offeringDriver">
+      <span class="alias">Company: </span>
+      <span class="detail-name">{{offeringDriver.companyname}}</span>
     </div>
   </div>
 </div>
 
-<div class="buy-wrap">
-  <div class="detail-price">{{transport.event.price}}</div>
+<div class="buy-wrap" *ngIf="transport && !canEdit">
+  <div class="detail-price">{{transport.price}}$</div>
   <div class="detail-buy">book now</div>
+</div>
+
+<div class="buy-wrap" *ngIf="canEdit">
+  <div (click)="initScript()" data-target="modal1" class="detail-edit waves-effect waves-light modal-trigger">edit</div>
+  <div data-target="modal2" class="detail-delete waves-effect waves-light modal-trigger">delete</div>
+</div>
+
+<div materialize="modal" id="modal1" class="modal" *ngIf="editTransport">
+  <form (ngSubmit)="saveChanges()" class="col s12">
+    <div class="modal-content">
+      <h4>Edit Offer</h4>
+      <div class="row">
+        <div class="row">
+          <div class="input-field col s12">
+            <input [(ngModel)]="editTransport.startpt" placeholder="Start Address" name="startpt" placeholder="Street 10 Str., 2770 - Bansko"
+              id="startpt" type="text" class="validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input [(ngModel)]="editTransport.endpt" placeholder="Arrive Address" name="endpt" placeholder="Street 10 Str., 1000 - Sofia"
+              id="endpt" type="text" class="validate">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input [(ngModel)]="editTransport.arrivet" placeholder="Arrive Time" type="text" class="timepicker" id="arrivet" name="arrivet">
+          </div>
+          <div class="input-field col s12">
+            <input [(ngModel)]="editTransport.duration" placeholder="Duration (minutes)" name="duration" id="duration" type="number">
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input [(ngModel)]="editTransport.capacity" placeholder="Vehilce Capacity (No. persons)" name="capacity" id="capacity" type="number">
+          </div>
+          <div class="input-field col s12" id="luggage">
+            <select materialize="material_select">
+              <option value="" disabled>Luggage Allowed</option>
+              <option value="no" [selected]="editTransport.luggage === 'no'">No</option>
+              <option value="yes" [selected]="editTransport.luggage === 'yes'">Yes</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input [(ngModel)]="editTransport.price" placeholder="Price" name="price" id="price" type="number" placeholder="30$">
+          </div>
+          <div class="input-field col s12">
+            <input [(ngModel)]="editTransport.date" placeholder="Transfer Date" type="text" class="datepicker" id="date" name="date">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-green btn-flat" (click)="saveChanges()">Save Changes</a>
+    </div>
+  </form>
+</div>
+
+<div materialize="modal" id="modal2" class="modal">
+  <div class="modal-content">
+    <h4>Delete Offer</h4>
+    <p>Are you sure you wish to delete this offer?</p>
+  </div>
+  <div class="modal-footer">
+    <a (click)="deleteOffer()" class="modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">No</a>
+  </div>
 </div>
