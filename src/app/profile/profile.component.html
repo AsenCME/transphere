@@ -8,7 +8,7 @@
               <img src="../../assets/user-bg.jpg" alt="user bg">
             </div>
             <div class="card-content">
-              <img src={{profilePic}} alt="" style="margin-left: -30vw;" class="circle responsive-img activator card-profile-image hide-on-med-and-up">
+              <img src={{profilePic}} alt="" style="margin-left: -30vw;" class="circle responsive-img card-profile-image">
               <a class="btn-floating activator btn-move-up waves-effect waves-light darken-2 right edit">
                 <i class="material-icons">create</i>
               </a>
@@ -48,10 +48,11 @@
                 <i class="fas fa-comment"></i>
                 <b>Driver Bio:</b> {{ driver.bio }}
               </p>
+              <br>
 
               <!-- Cards here -->
               <div class="row" *ngFor="let offer of offers">
-                <div class="col s12 m10 push-m1">
+                <div class="col s12">
                   <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
                       <span class="card-title">{{ offer.date }}
@@ -67,7 +68,7 @@
                       </p>
                     </div>
                     <div class="card-action">
-                      <a href="#">
+                      <a routerLink="/detail/{{offer.id}}">
                         <h3>
                           <b>{{ offer.price }} $</b>
                         </h3>

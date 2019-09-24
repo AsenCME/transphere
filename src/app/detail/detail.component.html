@@ -54,6 +54,12 @@
       <span class="alias">Company: </span>
       <span class="detail-name">{{offeringDriver.companyname}}</span>
     </div>
+    <div class="detail-info" *ngIf="offeringDriver" (click)="openGMaps()">
+      <span class="alias">google maps: </span>
+      <span class="detail-name">GO
+        <i class="material-icons" style="transform: translateY(5px);">directions</i>
+      </span>
+    </div>
   </div>
 </div>
 
@@ -99,8 +105,8 @@
           <div class="input-field col s12" id="luggage">
             <select materialize="material_select">
               <option value="" disabled>Luggage Allowed</option>
-              <option value="no" [selected]="editTransport.luggage === 'no'">No</option>
-              <option value="yes" [selected]="editTransport.luggage === 'yes'">Yes</option>
+              <option value="No" [selected]="editTransport.luggage === 'No'">No</option>
+              <option value="Yes" [selected]="editTransport.luggage === 'Yes'">Yes</option>
             </select>
           </div>
         </div>

@@ -52,6 +52,7 @@ export class DetailComponent implements OnInit {
   subToParams() {
     this.route.params.subscribe((params: Params) => {
       this.dataService.getDataById(params.id).subscribe(data => {
+        console.log(data[0]);
         this.dataService.singleTransChange.next(data[0]);
         this.getDriver(this.transport.driverid);
       });
@@ -94,5 +95,23 @@ export class DetailComponent implements OnInit {
 
   deleteOffer() {
     this.dataService.deleteOffer(this.transport.id);
+  }
+
+  openGMaps() {
+    let baseUrl = "https://www.google.com/maps/dir/?api=1";
+    let origin = (<String>this.transport.startpt)
+      .replace("-", " ")
+      .replace(/\s/g, "+")
+      .replace(/[+]{2}/g, "+")
+      .split("-")
+      .shift();
+    let destination = (<String>this.transport.endpt)
+      .replace("-", " ")
+      .replace(/\s/g, "+")
+      .replace(/[+]{2,}/g, "+")
+      .split("-")
+      .shift();
+    let finalUrl = `${baseUrl}&origin=${origin}&destination=${destination}`;
+    window.location.href = finalUrl;
   }
 }

@@ -62,7 +62,12 @@ body {
 }
 .arrow {
   position: relative;
-  font-size: 13px;
+  font-size: 5px;
+  margin-left: -15px;
+  color: #6e6e6e;
+}
+.arrow i {
+  color: #6e6e6e !important;
 }
 .search .arrow {
   display: none !important;
